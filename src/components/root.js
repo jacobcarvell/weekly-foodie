@@ -1,9 +1,15 @@
 import React, {Component} from 'react'
+import {Provider} from 'react-redux'
 import {browserHistory} from 'react-router'
+import {init as firebaseInit} from 'js/firebase'
+import configureStore from './configureStore'
 import Routes from './routes'
-class Root extends Component {
+
+export default class Root extends Component {
   constructor(props) {
     super(props)
+    firebaseInit()
+    this.store = configureStore()
   }
 render() {
     return (
@@ -11,4 +17,3 @@ render() {
     )
   }
 }
-export default Root
